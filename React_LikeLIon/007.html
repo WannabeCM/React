@@ -5,29 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>쇼핑몰 웹 페이지</title>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="src/style/style.css" />
   </head>
 
   <body>
-    <!-- 
-    <div>header
-        <h1>000 웹 페이지</h1>
-        <div>menu</div>
-    </div>
-
-    <div>main
-        <h2>hello world</h2>
-        <p>hello world</p>
-    </div>
-
-    <div>
-        product
-        div{잘팔리는 옷}*20
-    </div>
-
-    <div>
-        footer
-    </div> 
-    -->
     <div id="root"></div>
     <script
       src="https://unpkg.com/react@17/umd/react.development.js"
@@ -198,74 +184,29 @@
       ];
 
       console.log(data);
-      console.log(data[0]);
-
-      const Header = function (props) {
-        console.log(props);
-        return (
-          <div>
-            header
-            <h1>{props.name} 웹 페이지</h1>
-            <p>
-              {props.name}의 나이는 {props.age}입니다.
-            </p>
-            <div>menu</div>
-          </div>
-        );
-      };
 
       const Main = function () {
-        return (
-          <div>
-            main
-            <h2>hello world</h2>
-            <p>hello world</p>
-          </div>
-        );
+        return <h1 class="ir">상품페이지 목록</h1>;
       };
 
-      const Card = function (props) {
-        return <h3>{props.goods.productName}</h3>;
-      };
+      const Card = function () {};
 
-      const Product = function (props) {
-        console.log(props.item);
-        return (
-          <div>
-            product
-            <Card good={props.item[0]} />
-            <Card good={props.item[1]} />
-            <Card good={props.item[2]} />
-            <Card good={props.item[3]} />
-            <Card good={props.item[4]} />
-            <Card good={props.item[5]} />
-            <Card good={props.item[6]} />
-          </div>
-        );
-      };
+      const Cart = function () {};
 
-      const Footer = function () {
-        return <div>footer</div>;
+      const Product = function ({ item }) {
+        // console.log(item)
+        return <ul class="product-list"></ul>;
       };
 
       const body = (
         <div>
-          <p>컴포넌트화 실습</p>
-          <Header name={"hojun"} age={10} />
           <Main />
           <Product item={data} />
-          <Footer />
         </div>
       );
 
       const domContainer = document.querySelector("#root");
       ReactDOM.render(body, domContainer);
-      console.log(ReactDOM);
-
-      // console.dir(domContainer)
-      // console.log(domContainer)
-      // console.table(domContainer)
-      // console.error(domContainer)
     </script>
   </body>
 </html>

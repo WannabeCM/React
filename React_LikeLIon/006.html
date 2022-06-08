@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>쇼핑몰 웹 페이지</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./reset.css" />
   </head>
 
   <body>
@@ -197,49 +199,58 @@
         },
       ];
 
-      console.log(data);
-      console.log(data[0]);
+      // console.log(data)
+      // console.log(data[0])
 
-      const Header = function (props) {
-        console.log(props);
-        return (
-          <div>
-            header
-            <h1>{props.name} 웹 페이지</h1>
-            <p>
-              {props.name}의 나이는 {props.age}입니다.
-            </p>
-            <div>menu</div>
-          </div>
-        );
-      };
+      //   const Header = function (props) {
+      //     console.log(props);
+      //     return (
+      //       <div>
+      //         header
+      //         <h1>{props.name} 쇼핑몰</h1>
+      //         <p>
+      //           {props.name}의 나이는 {props.age}입니다.
+      //         </p>
+      //         <div>menu</div>
+      //       </div>
+      //     );
+      //   };
 
-      const Main = function () {
-        return (
-          <div>
-            main
-            <h2>hello world</h2>
-            <p>hello world</p>
-          </div>
-        );
-      };
+      //   const Main = function () {
+      //     return (
+      //       <div>
+      //         main
+      //         <h2>hello world</h2>
+      //         <p>hello world</p>
+      //       </div>
+      //     );
+      //   };
 
       const Card = function (props) {
-        return <h3>{props.goods.productName}</h3>;
-      };
-
-      const Product = function (props) {
-        console.log(props.item);
         return (
-          <div>
-            product
-            <Card good={props.item[0]} />
-            <Card good={props.item[1]} />
-            <Card good={props.item[2]} />
-            <Card good={props.item[3]} />
-            <Card good={props.item[4]} />
-            <Card good={props.item[5]} />
-            <Card good={props.item[6]} />
+          <div className="product-item">
+            <img
+              src={"http://test.api.weniv.co.kr/" + props.goods.thumbnailImg}
+              className="product-img"
+            />
+            <h3 className="product-name">{props.goods.productName}</h3>
+            <p className="m-price">{props.goods.price}</p>
+          </div>
+        );
+      };
+      const Product = function (props) {
+        // console.log(props.item)
+        return (
+          <div className="product">
+            <div className="product-list">
+              <Card goods={props.item[0]} />
+              <Card goods={props.item[1]} />
+              <Card goods={props.item[2]} />
+              <Card goods={props.item[3]} />
+              <Card goods={props.item[4]} />
+              <Card goods={props.item[5]} />
+              <Card goods={props.item[6]} />
+            </div>
           </div>
         );
       };
@@ -249,13 +260,10 @@
       };
 
       const body = (
-        <div>
-          <p>컴포넌트화 실습</p>
-          <Header name={"hojun"} age={10} />
-          <Main />
+        <main>
           <Product item={data} />
           <Footer />
-        </div>
+        </main>
       );
 
       const domContainer = document.querySelector("#root");
