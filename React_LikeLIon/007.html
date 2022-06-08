@@ -10,7 +10,7 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link rel="stylesheet" href="src/style/style.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
@@ -183,19 +183,44 @@
         },
       ];
 
-      console.log(data);
+      import Main from "./Main.js";
 
-      const Main = function () {
-        return <h1 class="ir">상품페이지 목록</h1>;
+      const Card = function ({ goods }) {
+        const url = "http://test.api.weniv.co.kr/" + goods.thumbnailImg;
+        return (
+          <li class="product-item">
+            <div class="product-img">
+              <img src={url} />
+            </div>
+            <strong class="product-name sl-ellipsis">
+              {goods.productName}
+            </strong>
+            <button class="like-btn"></button>
+            <div class="product-price">
+              <strong class="price m-price">
+                {goods.price}
+                <span>원</span>
+              </strong>
+            </div>
+          </li>
+        );
       };
 
-      const Card = function () {};
-
-      const Cart = function () {};
+      const Cart = function () {
+        return <a class="link-btn cart-link" href="#"></a>;
+      };
 
       const Product = function ({ item }) {
-        // console.log(item)
-        return <ul class="product-list"></ul>;
+        return (
+          <main className="product">
+            <ul class="product-list">
+              {item.map((item) => (
+                <Card goods={item} />
+              ))}
+            </ul>
+            <Cart />
+          </main>
+        );
       };
 
       const body = (
